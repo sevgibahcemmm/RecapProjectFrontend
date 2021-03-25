@@ -1,0 +1,37 @@
+<div *ngIf="dataLoaded==false" class="d-flex">
+  <strong>Loading...</strong>
+  <div class="spinner-grow text-info ms-auto" role="status" aria-hidden="true"></div>
+</div>
+
+<app-car-filter></app-car-filter>
+<div class="table-responsive">
+  <table *ngIf="dataLoaded==true" class="table table-success table-striped">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col"></th>
+        <th scope="col">Açıklama</th>
+        <th scope="col">Marka</th>
+        <th scope="col">Renk</th>
+        <th scope="col">Model</th>
+        <th scope="col">Kira Bedeli</th>
+        <th scope="col-auto"></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let car of cars" (click)="setCurrentCar(car)" routerLink="/car-detail/{{car.carId}}">
+        <th scope="row">{{car.carId}}</th>
+        <td><img src="{{car.imagePath}}" alt="" width="100px" height="80px"></td>
+        <td>{{car.description}}</td>
+        <td>{{car.brandName}}</td>
+        <td>{{car.colorName}}</td>
+        <td>{{car.modelYear}}</td>
+        <td>{{car.dailyPrice}}</td>
+        <td><button routerLink="/update/car/{{car.carId}}" class="btn btn-warning">
+            <fa-icon [icon]="['far', 'edit']"></fa-icon>
+            Güncelle</button></td>
+      </tr>
+  
+    </tbody>
+  </table>
+</div>

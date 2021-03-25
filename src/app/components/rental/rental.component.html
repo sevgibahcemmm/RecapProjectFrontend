@@ -1,0 +1,41 @@
+<div class="card text-center">
+  <div class="card-header">
+   <h2>Kiralanan Araç Listesi</h2> 
+  </div>
+  <div class="card-body">
+    <div *ngIf="dataLoaded==false" class="container d-flex mt-3">
+      <strong>Loading...</strong>
+      <div class="spinner-grow text-info ms-auto" role="status" aria-hidden="true"></div>
+    </div>
+    <table *ngIf="dataLoaded==true" class="container table table-dark table-striped mt-3">
+      <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Açıklama</th>
+          <th scope="col">Marka</th>
+          <th scope="col">Model</th>
+          <th scope="col">Şirket Adı</th>
+          <th scope="col">Adı</th>
+          <th scope="col">Soyadı</th>
+          <th scope="col">Kiralama tarihi</th>
+          <th scope="col">Geri Dönüş tarihi</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let rental of rentals">
+          <th scope="row">{{rental.rentalId}}</th>
+          <td>{{rental.carDescription}}</td>
+          <td>{{rental.carBrand}}</td>
+          <td>{{rental.carModel}}</td>
+          <td>{{rental.companyName}}</td>
+          <td>{{rental.firstName}}</td>
+          <td>{{rental.lastName}}</td>
+          <td>{{rental.rentDate | date}}</td>
+          <td>{{rental.returnDate | date}}</td>
+        </tr>
+
+      </tbody>
+    </table>
+
+  </div>
+</div>

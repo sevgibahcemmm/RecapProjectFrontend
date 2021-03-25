@@ -1,0 +1,36 @@
+<div class="card text-center">
+  <div class="card-header">
+    <h2>Şirket/Müşteri Listesi</h2>
+  </div>
+  <div class="card-body">
+
+    <div *ngIf="dataLoaded==false" class="container d-flex mt-3">
+      <strong>Loading...</strong>
+      <div class="spinner-grow text-info ms-auto" role="status" aria-hidden="true"></div>
+    </div>
+
+    <table *ngIf="dataLoaded==true" class="container table table-dark table-striped mt-3">
+      <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Adı</th>
+          <th scope="col">Soyadı</th>
+          <th scope="col">Emai Adresi</th>
+          <th scope="col">Şirket Adı</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let customer of customers">
+          <th scope="row">{{customer.userId}}</th>
+          <td>{{customer.firstName}}</td>
+          <td>{{customer.lastName}}</td>
+          <td>{{customer.email}}</td>
+          <td>{{customer.companyName}}</td>
+        </tr>
+
+      </tbody>
+    </table>
+
+
+  </div>
+</div>
